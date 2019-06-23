@@ -1,6 +1,10 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+
 import logo from './logo.svg';
 import './App.css';
+
+import store from './store';
 
 function App() {
   return (
@@ -23,4 +27,8 @@ function App() {
   );
 }
 
-export default App;
+export default () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);

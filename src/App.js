@@ -1,31 +1,22 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Container } from 'semantic-ui-react';
 
-import logo from './logo.svg';
-import './App.css';
+import Header from './Header';
+import Search from './Search';
+import SelectedUser from './SelectedUser';
 
 import store from './store';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <Header />
+    <Container style={{ marginTop: '7em' }}>
+      <Search />
+      <SelectedUser />
+    </Container>
+  </div>
+);
 
 export default () => (
   <Provider store={store}>

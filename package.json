@@ -4,12 +4,16 @@
   "private": true,
   "dependencies": {
     "faker": "^4.1.0",
+    "fuse.js": "^3.4.5",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
-    "redux-starter-kit": "^0.5.1"
+    "redux-starter-kit": "^0.5.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -19,6 +23,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "tabWidth": 2
   },
   "browserslist": {
     "production": [

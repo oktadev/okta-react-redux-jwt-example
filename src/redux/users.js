@@ -1,15 +1,23 @@
 import { createSlice } from 'redux-starter-kit';
 import faker from 'faker';
 
-const generateUsers = () => [...new Array(1000)].map(
-  () => faker.helpers.userCard()
-);
+const users = [...new Array(1000)].map(() => ({
+  ...faker.helpers.userCard(),
+  avatar: faker.image.avatar(),
+}));
 
-const { reducer } = createSlice({
-  slice: 'users',
+const { actions, reducer } = createSlice({
   initialState: {
-    users: generateUsers(),
+    users,
+    selected: null,
+  },
+  reducers: {
+    selectUser(state, { payload: user }) {
+      state.selected = user || null;
+    },
   },
 });
+
+export const { selectUser } = actions;
 
 export default reducer;

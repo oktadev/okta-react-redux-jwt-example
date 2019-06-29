@@ -1,20 +1,29 @@
 import { createSlice } from 'redux-starter-kit';
 
 const { actions, reducer } = createSlice({
-  slice: 'auth',
-  initialState: { loading: true, user: null },
+  initialState: {
+    loading: true,
+    user: null,
+    token: undefined,
+  },
   reducers: {
-    signIn(state, user) {
-      state.user = user;
+    setToken(state, { payload: token }) {
       state.loading = false;
-    },
-    signOut(state) {
-      state.user = null;
-      state.loading = false;
+      state.token = token;
+
+      if (token) {
+        try {
+          state.user = JSON.parse(atob(token.split('.')[1]));
+        } catch (error) {
+          state.user = null;
+        }
+      } else {
+        state.user = null;
+      }
     },
   },
 });
 
-export const { signIn, signOut } = actions;
+export const { setToken } = actions;
 
 export default reducer;

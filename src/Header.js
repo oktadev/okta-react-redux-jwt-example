@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import logo from './logo.svg';
 import { Container, Menu, Image, Loader, Dropdown } from 'semantic-ui-react';
@@ -15,12 +16,18 @@ const Header = ({ pageName, user, userLoading }) => (
 
       {userLoading || !user ? (
         <Menu.Item>
-          {userLoading ? <Loader active inline /> : 'Sign In'}
+          {userLoading ? (
+            <Loader active inline />
+          ) : (
+            <Link to="/login">Sign In</Link>
+          )}
         </Menu.Item>
       ) : (
-        <Dropdown item simple text="John Doe">
+        <Dropdown item simple text={user.name}>
           <Dropdown.Menu>
-            <Dropdown.Item>Sign out</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/logout">
+              Sign out
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       )}

@@ -18,7 +18,11 @@ const AuthHandler = ({
 }) => {
   React.useEffect(() => {
     auth.getIdToken().then((nextToken = null) => {
-      if (nextToken !== token) setAuth({ token: nextToken });
+      if (nextToken !== token) {
+        auth.getUser().then(user => {
+          setAuth({ token: nextToken, user });
+        });
+      }
     });
   });
 

@@ -7,13 +7,13 @@ const { actions, reducer } = createSlice({
     token: undefined,
   },
   reducers: {
-    setToken(state, { payload: token }) {
+    setAuth(state, { payload }) {
       state.loading = false;
-      state.token = token;
+      state.token = payload.token;
 
-      if (token) {
+      if (payload.token) {
         try {
-          state.user = JSON.parse(atob(token.split('.')[1]));
+          state.user = JSON.parse(atob(payload.token.split('.')[1]));
         } catch (error) {
           state.user = null;
         }
@@ -24,6 +24,6 @@ const { actions, reducer } = createSlice({
   },
 });
 
-export const { setToken } = actions;
+export const { setAuth } = actions;
 
 export default reducer;

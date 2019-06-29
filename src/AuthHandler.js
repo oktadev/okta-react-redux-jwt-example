@@ -4,7 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withAuth } from '@okta/okta-react';
 
-import { setToken } from './redux/auth';
+import { setAuth } from './redux/auth';
 import { updateUsers } from './redux/users';
 
 const AuthHandler = ({
@@ -13,12 +13,12 @@ const AuthHandler = ({
   token,
   userState,
   authUser,
-  setToken,
+  setAuth,
   updateUsers,
 }) => {
   React.useEffect(() => {
     auth.getIdToken().then((nextToken = null) => {
-      if (nextToken !== token) setToken(nextToken);
+      if (nextToken !== token) setAuth({ token: nextToken });
     });
   });
 
@@ -40,7 +40,7 @@ const mapStateToProps = state => ({
   userState: state.users,
 });
 
-const mapDispatchToProps = { setToken, updateUsers };
+const mapDispatchToProps = { setAuth, updateUsers };
 
 export default compose(
   withAuth,

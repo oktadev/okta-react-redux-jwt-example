@@ -26,6 +26,7 @@ const SearchPage = ({ users, selectUser, ...rest }) => {
         }}
         onSearchChange={e => setTerm(e.currentTarget.value)}
         results={filteredUsers.slice(0, 5).map(user => ({
+          childKey: user.id,
           title: user.name,
           description: user.username,
           image: user.avatar,

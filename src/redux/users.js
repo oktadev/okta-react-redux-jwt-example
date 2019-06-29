@@ -3,8 +3,9 @@ import faker from 'faker';
 
 const users = [...new Array(1000)].map(() => ({
   id: faker.random.uuid(),
-  ...faker.helpers.userCard(),
   avatar: faker.image.avatar(),
+  username: faker.internet.userName(),
+  name: `${faker.name.firstName()} ${faker.name.lastName()}`,
 }));
 
 const { actions, reducer } = createSlice({
@@ -16,9 +17,25 @@ const { actions, reducer } = createSlice({
     selectUser(state, { payload: user }) {
       state.selected = user || null;
     },
+    updateUsers(state, { payload: authUser }) {
+      if (authUser && authUser.groups.includes('Admins')) {
+        state.users = users.map(user => ({
+          ...faker.helpers.userCard(),
+          ...user,
+        }));
+      } else {
+        state.users = users;
+      }
+
+      if (state.selected) {
+        state.selected = state.users.find(
+          user => user.id === state.selected.id,
+        );
+      }
+    },
   },
 });
 
-export const { selectUser } = actions;
+export const { selectUser, updateUsers } = actions;
 
 export default reducer;

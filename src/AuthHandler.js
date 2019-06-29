@@ -5,8 +5,17 @@ import { connect } from 'react-redux';
 import { withAuth } from '@okta/okta-react';
 
 import { setToken } from './redux/auth';
+import { updateUsers } from './redux/users';
 
-const AuthHandler = ({ auth, location, token, setToken }) => {
+const AuthHandler = ({
+  auth,
+  location,
+  token,
+  userState,
+  authUser,
+  setToken,
+  updateUsers,
+}) => {
   React.useEffect(() => {
     auth.getIdToken().then((nextToken = null) => {
       if (nextToken !== token) setToken(nextToken);
@@ -18,11 +27,20 @@ const AuthHandler = ({ auth, location, token, setToken }) => {
     if (location.pathname === '/logout') auth.logout('/');
   }, [auth, location.pathname]);
 
+  React.useEffect(() => {
+    updateUsers(authUser);
+  }, [authUser, updateUsers]);
+
   return null;
 };
 
-const mapStateToProps = state => ({ token: state.auth.token });
-const mapDispatchToProps = { setToken };
+const mapStateToProps = state => ({
+  token: state.auth.token,
+  authUser: state.auth.user,
+  userState: state.users,
+});
+
+const mapDispatchToProps = { setToken, updateUsers };
 
 export default compose(
   withAuth,

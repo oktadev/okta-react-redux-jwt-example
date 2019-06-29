@@ -23,7 +23,13 @@ const Header = ({ pageName, user, userLoading }) => (
           )}
         </Menu.Item>
       ) : (
-        <Dropdown item simple text={user.name}>
+        <Dropdown
+          item
+          simple
+          text={[user.name, user.groups.includes('Admins') && '(Admin)']
+            .filter(Boolean)
+            .join(' ')}
+        >
           <Dropdown.Menu>
             <Dropdown.Item as={Link} to="/logout">
               Sign out

@@ -1,7 +1,7 @@
 {
   "name": "react-redux-jwts",
   "version": "0.1.0",
-  "private": true,
+  "license": "Apache-2.0",
   "dependencies": {
     "@okta/okta-react": "^1.2.0",
     "faker": "^4.1.0",

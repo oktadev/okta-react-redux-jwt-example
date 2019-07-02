@@ -29,7 +29,6 @@ export default () => (
         issuer={`${process.env.REACT_APP_OKTA_ORG_URL}/oauth2/default`}
         client_id={process.env.REACT_APP_OKTA_CLIENT_ID}
         redirect_uri={`${window.location.origin}/implicit/callback`}
-        scope={['openid', 'email', 'profile', 'groups']}
       >
         <Switch>
           <Route path="/implicit/callback" component={ImplicitCallback} />

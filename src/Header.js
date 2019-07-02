@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Container, Menu, Image, Loader, Dropdown } from 'semantic-ui-react';
 
 import logo from './logo.svg';
-import { Container, Menu, Image, Loader, Dropdown } from 'semantic-ui-react';
 
 const Header = ({ pageName, user, userLoading }) => (
   <Menu fixed="top" inverted>

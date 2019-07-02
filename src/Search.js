@@ -5,7 +5,7 @@ import Fuse from 'fuse.js';
 
 import { selectUser } from './redux/users';
 
-const SearchPage = ({ users, selectUser, ...rest }) => {
+const SearchPage = ({ users, selectUser }) => {
   const [term, setTerm] = React.useState('');
   const filteredUsers = React.useMemo(() => {
     if (!term) return users;
@@ -40,7 +40,6 @@ const SearchPage = ({ users, selectUser, ...rest }) => {
 
 const mapStateToProps = state => ({
   selected: state.users.selected,
-  searchTerm: state.users.searchTerm,
   users: state.users.users,
 });
 

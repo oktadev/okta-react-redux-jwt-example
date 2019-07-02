@@ -4,7 +4,7 @@ import { Message, Card, Image } from 'semantic-ui-react';
 
 import { selectUser } from './redux/users';
 
-const SelectedUser = ({ selected, users, selectUser, ...rest }) => {
+const SelectedUser = ({ selected, users, selectUser }) => {
   if (!selected) return null;
 
   return (
@@ -27,7 +27,6 @@ const SelectedUser = ({ selected, users, selectUser, ...rest }) => {
 
 const mapStateToProps = state => ({
   selected: state.users.selected,
-  searchTerm: state.users.searchTerm,
   users: state.users.users,
 });
 

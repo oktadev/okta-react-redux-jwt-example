@@ -14,7 +14,7 @@ import store from './store';
 const App = () => (
   <div>
     <Header />
-    <Container style={{ marginTop: '7em' }}>
+    <Container style={{ paddingTop: '7em' }}>
       <Search />
       <SelectedUser />
     </Container>

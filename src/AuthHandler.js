@@ -11,7 +11,6 @@ const AuthHandler = ({
   auth,
   location,
   token,
-  userState,
   authUser,
   setAuth,
   updateUsers,
@@ -41,7 +40,6 @@ const AuthHandler = ({
 const mapStateToProps = state => ({
   token: state.auth.token,
   authUser: state.auth.user,
-  userState: state.users,
 });
 
 const mapDispatchToProps = { setAuth, updateUsers };

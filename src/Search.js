@@ -39,7 +39,6 @@ const SearchPage = ({ users, selectUser }) => {
 };
 
 const mapStateToProps = state => ({
-  selected: state.users.selected,
   users: state.users.users,
 });
 
